@@ -11,7 +11,7 @@ import socketIO from "socket.io-client";
 import { format } from "timeago.js";
 
 // Socket.io endpoint url
-const ENDPOINT = "http://localhost:4000";
+const ENDPOINT = "https://guriraline-socket.onrender.com";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const DashboardMessages = () => {
