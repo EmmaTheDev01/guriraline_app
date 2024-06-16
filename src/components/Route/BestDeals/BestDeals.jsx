@@ -20,7 +20,7 @@ const BestDeals = () => {
         <div className={`${styles.heading} text-sm md:text-base lg:text-lg text-start`}>
           <h1 className="">Hot Deals</h1>
         </div>
-        <div className="flex flex-wrap justify-center gap-[20px] sm:gap-[20px] md:gap-[25px] lg:gap-[25px] xl:gap-[30px] mb-12 border-0">
+        <div className="flex flex-wrap justify-start gap-[20px] sm:gap-[20px] md:gap-[25px] lg:gap-[25px] xl:gap-[30px] mb-12 border-0">
           {data && data.length !== 0 && (
             <>
               {data.map((i, index) => (
