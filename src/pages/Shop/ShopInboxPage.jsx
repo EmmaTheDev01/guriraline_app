@@ -2,6 +2,8 @@ import React from 'react'
 import DashboardHeader from '../../components/Shop/Layout/DashboardHeader'
 import DashboardSideBar from '../../components/Shop/Layout/DashboardSideBar'
 import DashboardMessages from "../../components/Shop/DashboardMessages";
+import Footer from '../../components/Layout/Footer';
+import BottomNav from '../../components/Layout/BottomNav';
 
 const ShopInboxPage = () => {
   return (
@@ -13,6 +15,7 @@ const ShopInboxPage = () => {
       </div>
        <DashboardMessages />
     </div>
+    <BottomNav/>
   </div>
   )
 }

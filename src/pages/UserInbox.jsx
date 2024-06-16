@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
 import { TfiGallery } from "react-icons/tfi";
 import styles from "../styles/styles";
-const ENDPOINT = "https://socket-ecommerce-tu68.onrender.com/";
+import Footer from "../components/Layout/Footer";
+const ENDPOINT = "https://guriraline-socket.onrender.com";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const UserInbox = () => {
@@ -212,9 +213,9 @@ const UserInbox = () => {
       {!open && (
         <>
           <Header />
-          <h1 className="text-center text-[30px] py-3 font-Poppins">
+          <h3 className="text-center text-[30px] py-3 font-Poppins">
             All Messages
-          </h1>
+          </h3>
           {/* All messages list */}
           {conversations &&
             conversations.map((item, index) => (
