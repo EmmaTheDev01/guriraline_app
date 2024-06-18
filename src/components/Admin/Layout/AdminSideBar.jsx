@@ -16,7 +16,7 @@ const AdminSideBar = ({ active }) => {
       <div className="w-full flex items-center p-4">
         <Link to="/admin/dashboard" className="w-full flex items-center">
           <RxDashboard 
-            size={30}
+            size={20}
             color={`${active === 1 ? "#29625d" : "#555"}`}
           />
           <h5
@@ -32,7 +32,7 @@ const AdminSideBar = ({ active }) => {
       <div title="All Orders" className="w-full flex items-center p-4">
         <Link to="/admin-orders" className="w-full flex items-center">
           <FiShoppingBag 
-            size={30}
+            size={20}
             color={`${active === 2 ? "#29625d" : "#555"}`}
           />
           <h5
@@ -46,25 +46,25 @@ const AdminSideBar = ({ active }) => {
       </div>
 
       <div title="All Sellers" className="w-full flex items-center p-4">
-        <Link to="/admin-sellers" className="w-full flex items-center">
-          <GrWorkshop 
-            size={30}
-            color={`${active === 3 ? "#29625d" : "#555"}`}
-          />
-          <h5
-            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
-              active === 3 ? "text-green-900" : "text-[#555]"
-            }`}
-          >
-            All Sellers
-          </h5>
-        </Link>
-      </div>
+      <Link to="/admin-sellers" className="w-full flex items-center">
+        <GrWorkshop 
+          size={20}
+          style={{ color: active === 3 ? "#29625d" : "#555" }}
+        />
+        <h5
+          className={`hidden sm:block pl-2 text-[18px] font-[400] ${
+            active === 3 ? "text-green-900" : "text-[#555]"
+          }`}
+        >
+          All Sellers
+        </h5>
+      </Link>
+    </div>
 
       <div title="All Users" className="w-full flex items-center p-4">
         <Link to="/admin-users" className="w-full flex items-center">
           <HiOutlineUserGroup
-            size={30}
+            size={20}
             color={`${active === 4 ? "#29625d" : "#555"}`}
           />
           <h5
@@ -80,7 +80,7 @@ const AdminSideBar = ({ active }) => {
       <div title="All Products" className="w-full flex items-center p-4">
         <Link to="/admin-products" className="w-full flex items-center">
           <BsHandbag 
-            size={30}
+            size={20}
             color={`${active === 5 ? "#29625d" : "#555"}`}
           />
           <h5
@@ -96,7 +96,7 @@ const AdminSideBar = ({ active }) => {
       <div title="All Events" className="w-full flex items-center p-4">
         <Link to="/admin-events" className="w-full flex items-center">
           <MdOutlineLocalOffer 
-            size={30}
+            size={20}
             color={`${active === 6 ? "#29625d" : "#555"}`}
           />
           <h5
@@ -117,7 +117,7 @@ const AdminSideBar = ({ active }) => {
           className="w-full flex items-center"
         >
           <CiMoneyBill 
-            size={30}
+            size={20}
             color={`${active === 7 ? "#29625d" : "#555"}`}
           />
           <h5
@@ -136,7 +136,7 @@ const AdminSideBar = ({ active }) => {
           className="w-full flex items-center"
         >
           <AiOutlineSetting 
-            size={30}
+            size={20}
             color={`${active === 8 ? "#29625d" : "#555"}`}
           />
           <h5
