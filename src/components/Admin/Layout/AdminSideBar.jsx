@@ -11,13 +11,13 @@ import { AiOutlineSetting } from "react-icons/ai";
 
 const AdminSideBar = ({ active }) => {
   return (
-    <div className="w-full h-[90vh] bg-white shadow-sm overflow-y-scroll sticky top-0 left-0 z-10">
+    <div title="Dashboard" className="w-full h-[90vh] bg-white shadow-sm overflow-y-scroll sticky top-0 left-0 z-10">
       {/* single item */}
       <div className="w-full flex items-center p-4">
         <Link to="/admin/dashboard" className="w-full flex items-center">
-          <RxDashboard
+          <RxDashboard 
             size={30}
-            color={`${active === 1 ? "crimson" : "#555"}`}
+            color={`${active === 1 ? "#29625d" : "#555"}`}
           />
           <h5
             className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
@@ -29,11 +29,11 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      <div title="All Orders" className="w-full flex items-center p-4">
         <Link to="/admin-orders" className="w-full flex items-center">
-          <FiShoppingBag
+          <FiShoppingBag 
             size={30}
-            color={`${active === 2 ? "crimson" : "#555"}`}
+            color={`${active === 2 ? "#29625d" : "#555"}`}
           />
           <h5
             className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
@@ -45,11 +45,11 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      <div title="All Sellers" className="w-full flex items-center p-4">
         <Link to="/admin-sellers" className="w-full flex items-center">
-          <GrWorkshop
+          <GrWorkshop 
             size={30}
-            color={`${active === 3 ? "crimson" : "#555"}`}
+            color={`${active === 3 ? "#29625d" : "#555"}`}
           />
           <h5
             className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
@@ -61,11 +61,11 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      <div title="All Users" className="w-full flex items-center p-4">
         <Link to="/admin-users" className="w-full flex items-center">
           <HiOutlineUserGroup
             size={30}
-            color={`${active === 4 ? "crimson" : "#555"}`}
+            color={`${active === 4 ? "#29625d" : "#555"}`}
           />
           <h5
             className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
@@ -77,11 +77,11 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      <div title="All Products" className="w-full flex items-center p-4">
         <Link to="/admin-products" className="w-full flex items-center">
-          <BsHandbag
+          <BsHandbag 
             size={30}
-            color={`${active === 5 ? "crimson" : "#555"}`}
+            color={`${active === 5 ? "#29625d" : "#555"}`}
           />
           <h5
             className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
@@ -93,11 +93,11 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      <div title="All Events" className="w-full flex items-center p-4">
         <Link to="/admin-events" className="w-full flex items-center">
-          <MdOutlineLocalOffer
+          <MdOutlineLocalOffer 
             size={30}
-            color={`${active === 6 ? "crimson" : "#555"}`}
+            color={`${active === 6 ? "#29625d" : "#555"}`}
           />
           <h5
             className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
@@ -111,14 +111,14 @@ const AdminSideBar = ({ active }) => {
 
 
 
-      <div className="w-full flex items-center p-4">
+      <div title="Withdraw Request" className="w-full flex items-center p-4">
         <Link
           to="/admin-withdraw-request"
           className="w-full flex items-center"
         >
-          <CiMoneyBill
+          <CiMoneyBill 
             size={30}
-            color={`${active === 7 ? "crimson" : "#555"}`}
+            color={`${active === 7 ? "#29625d" : "#555"}`}
           />
           <h5
             className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
@@ -130,14 +130,14 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      <div title="Settings" className="w-full flex items-center p-4">
         <Link
           to="/profile"
           className="w-full flex items-center"
         >
-          <AiOutlineSetting
+          <AiOutlineSetting 
             size={30}
-            color={`${active === 8 ? "crimson" : "#555"}`}
+            color={`${active === 8 ? "#29625d" : "#555"}`}
           />
           <h5
             className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
