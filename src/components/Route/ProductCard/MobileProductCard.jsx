@@ -16,15 +16,11 @@ import {
   removeFromWishlist,
 } from "../../../redux/actions/wishlist";
 import { useEffect } from "react";
-import { addTocart } from "../../../redux/actions/cart";
 import { toast } from "react-toastify";
-import Ratings from "../../Products/Ratings";
 
 const MobileProductCard = ({ data,isEvent }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
-  const { cart } = useSelector((state) => state.cart);
   const [click, setClick] = useState(false);
-  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,20 +41,7 @@ const MobileProductCard = ({ data,isEvent }) => {
     dispatch(addToWishlist(data));
   };
 
-  const addToCartHandler = (id) => {
-    const isItemExists = cart && cart.find((i) => i._id === id);
-    if (isItemExists) {
-      toast.error("Item already in cart!");
-    } else {
-      if (data.stock < 1) {
-        toast.error("Product stock limited!");
-      } else {
-        const cartData = { ...data, qty: 1 };
-        dispatch(addTocart(cartData));
-        toast.success("Item added to cart successfully!");
-      }
-    }
-  };
+ 
 
   return (
     <>
@@ -73,7 +56,7 @@ const MobileProductCard = ({ data,isEvent }) => {
         </Link>
        
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
-          <span className="pb-3 font-200 text-xs ">
+          <span className="pb-3 font-bold text-sm ">
             {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}
           </span>
 
@@ -81,7 +64,7 @@ const MobileProductCard = ({ data,isEvent }) => {
 
           <div className="py-2 flex items-center justify-between absolute bottom-0">
             <div className="flex">
-              <span className={`${styles.productDiscountPrice}`}>RWF
+              <span className={`${styles.productDiscountPrice} text-xs`}>RWF
                  {data.originalPrice === 0
                   ? data.originalPrice
                   : data.discountPrice}
@@ -110,14 +93,6 @@ const MobileProductCard = ({ data,isEvent }) => {
               title="Add to wishlist"
             />
           )}
-          <AiOutlineEye
-            size={22}
-            className="cursor-pointer absolute right-2 top-14"
-            onClick={() => setOpen(!open)}
-            color="#333"
-            title="Quick view"
-          />
-          {open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null}
         </div>
       </div>
     </>
