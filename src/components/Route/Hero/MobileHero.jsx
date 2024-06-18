@@ -36,12 +36,11 @@ const ProductCarousel = () => {
 
   return (
     <div className="bg-gray-100 p-4">
-      <h2 className="text-2xl font-bold text-center mb-4">Popular Products</h2>
       <Slider {...settings}>
         {products.map((product) => (
           <div key={product.id} className="p-2">
             <div
-              className="bg-cover bg-center bg-no-repeat rounded-lg shadow-lg p-4 flex flex-col justify-end items-center h-80 overflow-hidden"
+              className="bg-cover bg-center bg-no-repeat rounded-lg shadow-lg p-4 flex flex-col justify-end items-center h-[140px] overflow-hidden"
               style={{ backgroundImage: `url(${product.imageUrl})` }}
             >
               <div className="bg-white bg-opacity-75 p-4 rounded-md w-full text-center">

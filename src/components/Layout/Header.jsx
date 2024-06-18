@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import styles from "../../styles/styles";
+import { useNavigate } from "react-router-dom";
 import { categoriesData, productData } from "../../static/data";
 import {
   AiOutlineHeart,
@@ -16,7 +17,7 @@ import { useSelector } from "react-redux";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
 import { RxCross1 } from "react-icons/rx";
-import logo from "../../Assests/Logo/logo.png"
+import logo from "../../Assests/Logo/logo.png";
 const Header = ({ activeHeading }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const { isSeller } = useSelector((state) => state.seller);
@@ -58,10 +59,7 @@ const Header = ({ activeHeading }) => {
           <div>
             <Link to="/">
               {/* Logo */}
-              <img
-                src={logo}
-                alt="logo"
-              />
+              <img src={logo} alt="logo" />
             </Link>
           </div>
           {/* search box */}
@@ -271,7 +269,7 @@ const Header = ({ activeHeading }) => {
           <div
             className={`fixed w-full bg-[#0000005f] z-20 h-full top-0 left-0`}
           >
-            <div className="fixed w-[70%] bg-[#fff] h-screen top-0 left-0 z-10 overflow-y-scroll">
+            <div className="fixed w-[100%] bg-[#fff] h-screen top-0 left-0 z-10 overflow-y-scroll">
               <div className="w-full justify-between flex pr-3">
                 <div>
                   <div
@@ -284,6 +282,7 @@ const Header = ({ activeHeading }) => {
                     </span>
                   </div>
                 </div>
+               
                 <RxCross1
                   size={30}
                   className="ml-4 mt-5"
@@ -291,78 +290,37 @@ const Header = ({ activeHeading }) => {
                 />
               </div>
 
-              <div className="my-8 w-[92%] m-auto h-[40px relative]">
-                <input
-                  type="search"
-                  placeholder="Search Product..."
-                  className="h-[40px] w-full px-2 border-[#29625d] border-[2px] rounded-md"
-                  value={searchTerm}
-                  onChange={handleSearchChange}
-                />
-                {searchData && (
-                  <div className="absolute bg-[#fff] z-10 shadow w-full left-0 p-3">
-                    {searchData.map((i) => {
-                      const d = i.name;
-
-                      const Product_name = d.replace(/\s+/g, "-");
+              {/* Short Navbar */}
+              <h3 className="ml-4 font-[500] mt-7 ">All Categories</h3>
+              <div className="flex justify-center items-center mt-3">
+                <div className="grid grid-cols-2 gap-[10px]">
+                  {categoriesData &&
+                    categoriesData.map((i) => {
+                      const handleSubmit = (i) => {
+                        Navigate(`/products?category=${i.title}`);
+                      };
                       return (
-                        <Link to={`/product/${Product_name}`}>
-                          <div className="flex items-center">
-                            <img
-                              src={i.image_Url[0]?.url}
-                              alt=""
-                              className="w-[50px] mr-2"
-                            />
-                            <h5>{i.name}</h5>
-                          </div>
-                        </Link>
+                        <div
+                          className="w-full border-[1px] rounded-md p-1 h-[80px] m-1 flex items-center justify-between cursor-pointer overflow-hidden"
+                          key={i.id}
+                          onClick={() => handleSubmit(i)}
+                        >
+                          <h5 className={`text-[18px] w-full leading-[1.3]`}>{i.title}</h5>
+                          <img
+                            src={i.image_Url}
+                            className="w-[50px] h-[50px] block object-cover"
+                            alt=""
+                          />
+                        </div>
                       );
                     })}
-                  </div>
-                )}
+                </div>
               </div>
 
-              <Navbar active={activeHeading} />
-              <div className={`${styles.button} ml-2`}>
-                <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
-                  <h1 className="text-[#fff] flex items-center">
-                    {isSeller ? "Seller Dashboard" : "Become a Seller"}{" "}
-                    <IoIosArrowForward className="ml-1" />
-                  </h1>
-                </Link>
-              </div>
-              <br />
-              <br />
-              <br />
 
-              <div className="flex w-full justify-center">
-                {isAuthenticated ? (
-                  <div>
-                    <Link to="/profile">
-                      <img
-                        src={`${user.avatar?.url}`}
-                        alt=""
-                        className="w-[60px] h-[60px] rounded-full border-[3px] border-[#0eae88]"
-                      />
-                    </Link>
-                  </div>
-                ) : (
-                  <>
-                    <Link
-                      to="/login"
-                      className="text-[18px] pr-[10px] text-[#000000b7]"
-                    >
-                      Login /
-                    </Link>
-                    <Link
-                      to="/sign-up"
-                      className="text-[18px] text-[#000000b7]"
-                    >
-                      Sign up
-                    </Link>
-                  </>
-                )}
-              </div>
+              <br />
+              <br />
+              <br />
             </div>
           </div>
         )}

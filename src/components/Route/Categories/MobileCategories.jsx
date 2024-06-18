@@ -1,57 +1,47 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { brandingData, categoriesData } from "../../../static/data";
 import styles from "../../../styles/styles";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const MobileCategories = () => {
   const navigate = useNavigate();
+
+  // Settings for react-slick slider
+  const sliderSettings = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+  };
+
   return (
     <>
-      <div className={`${styles.section} hidden sm:block`}>
-        <div
-          className={`branding my-12 flex justify-between w-full shadow-sm bg-white p-5 rounded-md`}
-        >
-          {brandingData &&
-            brandingData.map((i, index) => (
-              <div className="flex items-start" key={index}>
-                {i.icon}
-                <div className="px-3">
-                  <h3 className="font-bold text-sm md:text-base">{i.title}</h3>
-                  <p className="text-xs md:text-sm">{i.Description}</p>
-                </div>
-              </div>
-            ))}
-        </div>
-      </div>
-
-      <div
-        className={`${styles.section} bg-white p-6 rounded-lg mb-12`}
-        id="categories"
-      >
-        <div className="flex justify-between flex-wrap  gap-[5px] md:grid-cols-2 md:gap-[20px] lg:grid-cols-4 lg:gap-[20px] xl:grid-cols-5 xl:gap-[30px]">
+      <div className="w-[97%] bg-[#29625d] p-1 rounded-lg mt-3 mb-3 ml-auto mr-auto" id="categories">
+      <h6 className="text-[18px] font-[500] text-white m-3">Categories</h6>
+        <Slider {...sliderSettings}>
           {categoriesData &&
             categoriesData.map((i) => {
-              const handleSubmit = (i) => {
+              const handleSubmit = () => {
                 navigate(`/products?category=${i.title}`);
               };
               return (
-                <div
-                  className="w-100 h-[120px] block cursor-pointer overflow-hidden"
-                  key={i.id}
-                  onClick={() => handleSubmit(i)}
-                >
-                  <img
-                    src={i.image_Url}
-                    className="w-[70px] object-cover"
-                    alt=""
-                  />
-                  <h5 className={`w-20 gap-4 text-[14px] hover:text-green-700 leading-[1.3]`}>
-                    {i.title}
-                  </h5>
+                <div key={i.id} className="px-2 mt-2 w-[80px]">
+                  <div className="w-100 h-[120px] block cursor-pointer overflow-hidden" onClick={handleSubmit}>
+                    <img src={i.image_Url} className="w-[50px] h-[50px] rounded-[100%] object-cover" alt="" />
+                    <h5 className={`w-20 gap-4 text-[14px] mt-1 text-white font-[500] hover:text-yellow-700 leading-[1.3]`}>{i.title}</h5>
+                  </div>
+
                 </div>
+
               );
             })}
-        </div>
+        </Slider>
+        <Link>
+          <span className="text-xs mr-2 flex items-end justify-end text-white hover:text-yellow-500">See All</span>
+        </Link>
       </div>
     </>
   );

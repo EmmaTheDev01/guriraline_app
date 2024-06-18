@@ -12,6 +12,7 @@ import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { MdTrackChanges } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
+import { IoIosArrowForward } from "react-icons/io";
 import {
   deleteUserAddress,
   loadUser,
@@ -26,6 +27,7 @@ import { getAllOrdersOfUser } from "../../redux/actions/order";
 
 const ProfileContent = ({ active }) => {
   const { user, error, successMessage } = useSelector((state) => state.user);
+  const { isSeller } = useSelector((state) => state.seller);
   const [name, setName] = useState(user && user.name);
   const [email, setEmail] = useState(user && user.email);
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
@@ -81,6 +83,15 @@ const ProfileContent = ({ active }) => {
       {/* profile */}
       {active === 1 && (
         <>
+          <div className="rounded-md border-[1px] m-2 px-3 py-2 text-sm font-medium ">
+            {isSeller ? "Check your" : "Become a Seller"}
+            <Link className="w-[50px]" to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
+              <span className="text-[#29625d] m-1 flex items-center">
+                {isSeller ? "Seller Dashboard" : "Become a Seller"}{" "}
+                <IoIosArrowForward className="ml-1" />
+              </span>
+            </Link>
+          </div>
           <div className="flex justify-center w-full">
             <div className="relative">
               <img
