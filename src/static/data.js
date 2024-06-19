@@ -226,47 +226,54 @@ export const categoriesData = [
   },
   {
     id: 6,
+    title: "Watches",
+    subTitle: "",
+    image_Url:
+      "https://img.freepik.com/free-vector/watch-male-female-kid-set-3d-realistic-vector_529539-281.jpg?size=338&ext=jpg&ga=GA1.1.1141335507.1718323200&semt=ais_user",
+  },
+  {
+    id: 7,
     title: "Gifts",
     subTitle: "",
     image_Url:
       "https://www.freepnglogos.com/uploads/gift-png/gift-present-prize-icon-24.png",
   },
   {
-    id: 7,
+    id: 8,
     title: "Pet Care",
     subTitle: "",
     image_Url: "https://pnghq.com/wp-content/uploads/pets-full-hd-77317.png",
   },
   {
-    id: 8,
+    id: 9,
     title: "Mobiles",
     subTitle: "",
     image_Url:
       "https://st-troy.mncdn.com/mnresize/1500/1500/Content/media/ProductImg/original/mpwp3tua-apple-iphone-14-256gb-mavi-mpwp3tua-637986832343472449.jpg",
   },
   {
-    id: 9,
+    id: 10,
     title: "Music",
     subTitle: "",
     image_Url:
       "https://poshace.com/pub/media/catalog/product/cache/95ca844a72e649bb1089a2da1cdcef7d/3/1/31p7YMrSnGL._SL1500__1629956436.jpg",
-  }, 
+  },
   {
-    id: 10,
+    id: 11,
     title: "Furniture",
     subTitle: "",
     image_Url:
       "https://png.pngtree.com/png-vector/20240125/ourmid/pngtree-yellow-sofa-furniture-png-image_11548333.png",
   },
   {
-    id: 11,
+    id: 12,
     title: "Home Decor",
     subTitle: "",
     image_Url:
       "https://img.freepik.com/premium-photo/realistic-rendering-vases-pillow-with-white-sheets_899449-256527.jpg",
   },
   {
-    id: 12,
+    id: 13,
     title: "Others",
     subTitle: "",
     image_Url:

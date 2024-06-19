@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { AiOutlineSearch, AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
 import Wishlist from "../Wishlist/Wishlist";
+import { RxCross1 } from "react-icons/rx";
+import { categoriesData } from "../../static/data";
+
 
 const BottomNav = () => {
     const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -11,6 +15,7 @@ const BottomNav = () => {
     const [searchData, setSearchData] = useState(null);
     const { allProducts } = useSelector((state) => state.products);
     const [openWishlist, setOpenWishlist] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const containerStyle = {
         width: "108%",
@@ -46,17 +51,18 @@ const BottomNav = () => {
     };
 
     const handleSearchChange = (e) => {
-        const term = e.target.value;
+        const term = e.target.value.toLowerCase();
         setSearchTerm(term);
-
-        const filteredProducts =
-            allProducts &&
-            allProducts.filter((product) =>
-                product.name.toLowerCase().includes(term.toLowerCase())
-            );
+    
+        // Filter products based on product name, shop name, and category
+        const filteredProducts = allProducts.filter((product) =>
+          product.name.toLowerCase().includes(term) ||
+          (product.shop && product.shop.name.toLowerCase().includes(term)) ||
+          product.category.toLowerCase().includes(term)
+        );
+    
         setSearchData(filteredProducts);
-    };
-
+      };
     return (
         <div style={containerStyle}>
             <section id="bottom-navigation" style={sectionStyle}>
@@ -77,7 +83,7 @@ const BottomNav = () => {
                         </svg>
                         <span className="tab tab-home block text-xs hover:text-green-700">Home</span>
                     </Link>
-                    <Link to="/" style={tabStyle}>
+                    <Link to="/" style={tabStyle} onClick={() => setOpen(true)}>
                         {/* Categories tab */}
                         <svg
                             width="25px"
@@ -158,17 +164,33 @@ const BottomNav = () => {
                         style={{ width: "100%", padding: "10px", borderRadius: "5px", border: "1px solid #ddd" }}
                     />
                     <div>
-                        {searchData && searchData.length > 0 ? (
-                            searchData.map((product) => (
-                                <div key={product._id} style={{ padding: "10px 0", borderBottom: "1px solid #ddd" }}>
-                                    <Link to={`/product/${product._id}`} onClick={() => document.getElementById('searchModal').style.display = 'none'}>
-                                        {product.name}
-                                    </Link>
-                                </div>
-                            ))
-                        ) : (
-                            <p>No products found</p>
-                        )}
+                    {searchData && searchData.length !== 0 ? (
+              <div className="absolute min-h-[30vh] w-full bg-slate-50 shadow-sm-2 z-[9] p-4">
+                {searchData.map((product) => (
+                  <div key={product._id} className="flex items-center py-3">
+                    <Link
+                      to={`/product/${product._id}`}
+                      className="flex items-center"
+                    >
+                      <img
+                        src={`${product.images[0]?.url}`}
+                        alt=""
+                        className="w-[40px] h-[40px] mr-[10px] rounded-md"
+                      />
+                      <div className="flex flex-col">
+                        <h1 className="text-base">{product.name}</h1>
+                        <Link
+                          to={`/shop/${product.shop._id}`}
+                          className="text-sm text-[#29625d]"
+                        >
+                          {product.shop.name}
+                        </Link>
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            ) : <p>No Products Found!</p>}
                     </div>
                 </div>
             </div>
@@ -215,6 +237,54 @@ const BottomNav = () => {
                     </div>
                 </div>
             )}
+            {open && (
+          <div
+            className={`fixed w-full bg-[#0000005f] z-20 h-full top-0 left-0`}
+          >
+            <div className="fixed w-[100%] bg-[#fff] h-screen top-0 left-0 z-10 overflow-y-scroll">
+              <div className="w-full justify-between flex pr-3">
+                <RxCross1
+                  size={30}
+                  className="ml-4 mt-5"
+                  onClick={() => setOpen(false)}
+                />
+              </div>
+
+              {/* Short Navbar */}
+              <h3 className="ml-4 font-[500] mt-7 ">All Categories</h3>
+              <div className="flex justify-center items-center mt-3">
+                <div className="grid grid-cols-2 gap-[10px]">
+                  {categoriesData &&
+                    categoriesData.map((i) => {
+                      const handleSubmit = (i) => {
+                        Navigate(`/products?category=${i.title}`);
+                      };
+                      return (
+                        <div
+                          className="w-full border-[1px] rounded-md p-1 h-[80px] m-1 flex items-center justify-between cursor-pointer overflow-hidden"
+                          key={i.id}
+                          onClick={() => handleSubmit(i)}
+                        >
+                          <h5 className={`text-[18px] w-full leading-[1.3]`}>
+                            {i.title}
+                          </h5>
+                          <img
+                            src={i.image_Url}
+                            className="w-[50px] h-[50px] block object-cover"
+                            alt=""
+                          />
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+
+              <br />
+              <br />
+              <br />
+            </div>
+          </div>
+        )}
         </div>
     );
 };

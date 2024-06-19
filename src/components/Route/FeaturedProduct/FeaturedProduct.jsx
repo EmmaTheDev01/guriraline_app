@@ -57,7 +57,7 @@ const FeaturedProduct = () => {
           <h1>Featured Products</h1>
         </div>
         {allProducts ? (
-         <div className="flex justify-center flex-wrap gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-5 xl:gap-[30px] mb-5">
+         <div className="flex justify-start flex-wrap gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-5 xl:gap-[30px] mb-5">
             {allProducts.map((product, index) => (
               <div key={index}>
                 <ProductCard data={product} />

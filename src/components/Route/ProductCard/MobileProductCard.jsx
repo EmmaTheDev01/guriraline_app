@@ -45,7 +45,7 @@ const MobileProductCard = ({ data,isEvent }) => {
 
   return (
     <>
-      <div className="w-[160px] h-[200px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer overflow-hidden">
+      <div className="w-[160px] h-[210px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer overflow-hidden">
         <div className="flex justify-end"></div>
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
           <img
@@ -56,7 +56,7 @@ const MobileProductCard = ({ data,isEvent }) => {
         </Link>
        
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
-          <span className="pb-3 font-bold text-sm ">
+          <span className="pb-3 overflow-hidden font-bold text-sm ">
             {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}
           </span>
 
@@ -64,7 +64,7 @@ const MobileProductCard = ({ data,isEvent }) => {
 
           <div className="py-2 flex items-center justify-between absolute bottom-0">
             <div className="flex">
-              <span className={`${styles.productDiscountPrice} text-xs`}>RWF
+              <span className={`${styles.productDiscountPrice} text-xs text-[#29625d]`}>RWF
                  {data.originalPrice === 0
                   ? data.originalPrice
                   : data.discountPrice}

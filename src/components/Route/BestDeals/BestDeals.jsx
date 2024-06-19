@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styles from "../../../styles/styles";
+import styles from "../../../styles/styles"; 
 import ProductCard from "../ProductCard/ProductCard";
-import Loader from "../../Layout/Loader"; // Adjust import path as per your project structure
+import Loader from "../../Layout/Loader"; 
 
 const BestDeals = () => {
   const [data, setData] = useState([]);
@@ -48,7 +48,7 @@ const BestDeals = () => {
           <h1 className="">Hot Deals</h1>
         </div>
         {allProducts ? (
-          <Slider {...settings}>
+          <Slider {...settings} className="custom-slider">
             {data.map((product, index) => (
               <div key={index}>
                 <ProductCard data={product} />

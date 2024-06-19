@@ -59,7 +59,7 @@ const ProductCard = ({ data, isEvent }) => {
 
   return (
     <>
-      <div className="w-[280px] h-[370px] sm:h-[320px] md:h-[350px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer">
+      <div className="w-[300px] h-[370px] sm:h-[320px] md:h-[350px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer">
         <div className="flex justify-center"></div>
         <Link
           to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}
