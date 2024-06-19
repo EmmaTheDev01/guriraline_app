@@ -52,18 +52,18 @@ const FeaturedProduct = () => {
 
   return (
     <div>
-      <div className={`${styles.section}`}>
+      <div className={`${styles.section} mb-20`}>
         <div className={`${styles.heading} text-sm md:text-base lg:text-lg text-start`}>
           <h1>Featured Products</h1>
         </div>
         {allProducts ? (
-          <Slider {...settings} className="mb-12 border-0">
+         <div className="flex justify-center flex-wrap gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-5 xl:gap-[30px] mb-5">
             {allProducts.map((product, index) => (
               <div key={index}>
                 <ProductCard data={product} />
               </div>
             ))}
-          </Slider>
+          </div>
         ) : (
           <div className="flex justify-center items-center h-40">
             <Loader /> {/* Display loader while fetching products */}

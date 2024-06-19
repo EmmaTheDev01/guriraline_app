@@ -6,7 +6,6 @@ import BestDeals from "../components/Route/BestDeals/BestDeals";
 import FeaturedProduct from "../components/Route/FeaturedProduct/FeaturedProduct";
 import Events from "../components/Events/Events";
 import Footer from "../components/Layout/Footer";
-import TabsWithButtons from '../components/Route/Tabs/Tabs';
 const HomePage = () => {
   return (
     <div>
@@ -16,7 +15,6 @@ const HomePage = () => {
       <BestDeals />
       <Events />
       <FeaturedProduct />
-      <TabsWithButtons/>
       <Footer />
     </div>
   )

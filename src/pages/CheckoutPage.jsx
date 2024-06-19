@@ -5,6 +5,7 @@ import Checkout from "../components/Checkout/Checkout";
 import Footer from '../components/Layout/Footer';
 
 const CheckoutPage = () => {
+  
   return (
     <div>
         <Header />

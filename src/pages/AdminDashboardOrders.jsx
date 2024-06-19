@@ -4,7 +4,7 @@ import AdminSideBar from "../components/Admin/Layout/AdminSideBar";
 import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersOfAdmin } from "../redux/actions/order";
-import BottomNav from "../components/Layout/BottomNav";const AdminDashboardOrders = () => {
+import BottomNav from "../components/Layout/BottomNav"; const AdminDashboardOrders = () => {
   const dispatch = useDispatch();
 
   const { adminOrders, adminOrderLoading } = useSelector(
@@ -45,12 +45,12 @@ import BottomNav from "../components/Layout/BottomNav";const AdminDashboardOrder
       flex: 0.8,
     },
     {
-        field: "createdAt",
-        headerName: "Order Date",
-        type: "number",
-        minWidth: 130,
-        flex: 0.8,
-      },
+      field: "createdAt",
+      headerName: "Order Date",
+      type: "number",
+      minWidth: 130,
+      flex: 0.8,
+    },
   ];
 
   const row = [];
@@ -61,9 +61,12 @@ import BottomNav from "../components/Layout/BottomNav";const AdminDashboardOrder
         itemsQty: item?.cart?.reduce((acc, item) => acc + item.qty, 0),
         total: item?.totalPrice + " $",
         status: item?.status,
-        createdAt: item?.createdAt.slice(0,10),
+        createdAt: item?.createdAt.slice(0, 10),
       });
     });
+  const isSmallScreen = () => {
+    return window.innerWidth <= 768; // Adjust this width as per your requirement
+  }
   return (
     <div>
       <AdminHeader />
@@ -86,8 +89,8 @@ import BottomNav from "../components/Layout/BottomNav";const AdminDashboardOrder
           </div>
         </div>
       </div>
-
-      <BottomNav />
+      {/* Conditionally render BottomNav only on smaller screens */}
+      {isSmallScreen() && <BottomNav />}
     </div>
   );
 };

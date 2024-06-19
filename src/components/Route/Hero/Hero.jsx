@@ -33,7 +33,7 @@ const Hero = () => {
             <h2 className="font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none max-w-lg mb-6">
               You need it,
               <br className="hidden md:block" />
-              We <span className="inline-block text-yellow-600">got it!</span>
+              We <span className="inline-block text-[#fed592]">got it!</span>
             </h2>
             <p className="text-gray-700 text-base md:text-lg">
               Introducing GuriraLine: Rwanda's pioneering e-commerce platform,
@@ -45,7 +45,7 @@ const Hero = () => {
           </div>
           <div className="flex items-center space-x-3">
             {/* Adding a button */}
-            <button class="bg-[#29625d] hover:bg-[#c7a740] text-white font-bold py-2 px-4 rounded">
+            <button class="bg-[#29625d] hover:bg-[#fed592] text-white font-bold py-2 px-4 rounded">
               Shop Now
             </button>
             <a

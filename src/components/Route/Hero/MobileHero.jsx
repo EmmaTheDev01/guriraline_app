@@ -43,9 +43,9 @@ const ProductCarousel = () => {
               className="bg-cover bg-center bg-no-repeat rounded-lg shadow-lg p-4 flex flex-col justify-end items-center h-[140px] overflow-hidden"
               style={{ backgroundImage: `url(${product.imageUrl})` }}
             >
-              <div className="bg-white bg-opacity-75 p-4 rounded-md w-full text-center">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{product.name}</h3>
-                <p className="text-gray-600">{product.price}</p>
+              <div className="bg-[#fed592] bg-opacity-75 p-4 rounded-md w-full text-center">
+                <h3 className="text-xl font-bold text-[#29625d] mb-2">{product.name}</h3>
+                <p className="text-gray-900">{product.price}</p>
               </div>
             </div>
           </div>

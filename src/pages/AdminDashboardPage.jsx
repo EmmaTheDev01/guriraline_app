@@ -4,6 +4,10 @@ import AdminSideBar from "../components/Admin/Layout/AdminSideBar";
 import AdminDashboardMain from "../components/Admin/AdminDashboardMain";
 import BottomNav from "../components/Layout/BottomNav";
 const AdminDashboardPage = () => {
+  const isSmallScreen = () => {
+    return window.innerWidth <= 768; // Adjust this width as per your requirement
+  }
+
   return (
     <div>
       <AdminHeader />
@@ -15,7 +19,8 @@ const AdminDashboardPage = () => {
           <AdminDashboardMain />
         </div>
       </div>
-      <BottomNav />
+      {/* Conditionally render BottomNav only on smaller screens */}
+      {isSmallScreen() && <BottomNav />}
     </div>
   );
 };
