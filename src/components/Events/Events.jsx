@@ -21,9 +21,9 @@ const Events = () => {
             <EventCard data={allEvents && allEvents[0]} />
           )
          }
-         <h4>{
+         <h4 className='mb-2'>{
            allEvents?.length === 0 && (
-            'No Events have!'
+            'No Scheduled Events !'
            )
           }
 

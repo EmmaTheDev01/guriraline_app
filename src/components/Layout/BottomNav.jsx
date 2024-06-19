@@ -13,8 +13,7 @@ const BottomNav = () => {
     const [openWishlist, setOpenWishlist] = useState(false);
 
     const containerStyle = {
-        width: "100%",
-        height: "100vh",
+        width: "108%",
     };
 
     const sectionStyle = {
@@ -22,6 +21,7 @@ const BottomNav = () => {
         bottom: 0,
         left: 0,
         width: "100%",
+        borderRadius: "20px",
         backgroundColor: "#fff",
         boxShadow: "0 -2px 4px rgba(0, 0, 0, 0.1)",
         zIndex: 10,

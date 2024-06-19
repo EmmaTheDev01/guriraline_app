@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Slider from "react-slick";
 import styles from "../../../styles/styles";
 import ProductCard from "../ProductCard/ProductCard";
+import Loader from "../../Layout/Loader"; // Adjust import path as per your project structure
 
 const FeaturedProduct = () => {
   const { allProducts } = useSelector((state) => state.products);
@@ -55,15 +56,19 @@ const FeaturedProduct = () => {
         <div className={`${styles.heading} text-sm md:text-base lg:text-lg text-start`}>
           <h1>Featured Products</h1>
         </div>
-        <Slider {...settings} className="mb-12 border-0">
-          {allProducts && allProducts.length !== 0 && (
-            allProducts.map((product, index) => (
+        {allProducts ? (
+          <Slider {...settings} className="mb-12 border-0">
+            {allProducts.map((product, index) => (
               <div key={index}>
                 <ProductCard data={product} />
               </div>
-            ))
-          )}
-        </Slider>
+            ))}
+          </Slider>
+        ) : (
+          <div className="flex justify-center items-center h-40">
+            <Loader /> {/* Display loader while fetching products */}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -7,19 +7,21 @@ const CountDown = ({ data }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
+      const newTimeLeft = calculateTimeLeft();
+      setTimeLeft(newTimeLeft);
+
+      // Check if timeLeft is empty (all fields are undefined)
+      if (
+        Object.keys(newTimeLeft).every((key) => typeof newTimeLeft[key] === "undefined")
+      ) {
+        // Perform delete operation
+        deleteEvent();
+      }
     }, 1000);
 
-    if (
-      typeof timeLeft.days === 'undefined' &&
-      typeof timeLeft.hours === 'undefined' &&
-      typeof timeLeft.minutes === 'undefined' &&
-      typeof timeLeft.seconds === 'undefined'
-    ) {
-      axios.delete(`${server}/event/delete-shop-event/${data._id}`);
-    }
+    // Clear timeout on component unmount
     return () => clearTimeout(timer);
-  });
+  }, [data]); // Depend on 'data' to ensure useEffect runs when 'data' changes
 
   function calculateTimeLeft() {
     const difference = +new Date(data.Finish_Date) - +new Date();
@@ -37,13 +39,23 @@ const CountDown = ({ data }) => {
     return timeLeft;
   }
 
+  const deleteEvent = () => {
+    axios.delete(`${server}/event/delete-shop-event/${data._id}`)
+      .then(() => {
+        console.log("Event deleted successfully");
+      })
+      .catch((error) => {
+        console.error("Error deleting event:", error);
+      });
+  };
+
   const timerComponents = Object.keys(timeLeft).map((interval) => {
     if (!timeLeft[interval]) {
       return null;
     }
 
     return (
-      <span className="text-[18px] text-[#29625d] font-[500]">
+      <span key={interval} className="text-[18px] text-[#29625d] font-[500]">
         {timeLeft[interval]} {interval}{" "}
       </span>
     );
@@ -54,7 +66,7 @@ const CountDown = ({ data }) => {
       {timerComponents.length ? (
         timerComponents
       ) : (
-        <span className="text-[red] text-[25px]">Time's Up</span>
+        <span className="text-[red] text-[18px]">Event Timed out</span>
       )}
     </div>
   );

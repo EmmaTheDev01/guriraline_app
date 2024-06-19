@@ -31,7 +31,7 @@ const MobileCategories = () => {
                 <div key={i.id} className="px-2 mt-2 w-[80px]">
                   <div className="w-100 h-[120px] block cursor-pointer overflow-hidden" onClick={handleSubmit}>
                     <img src={i.image_Url} className="w-[70px] h-[70px] rounded-[100%] object-cover" alt="" />
-                    <h5 className={`w-20 gap-4 text-[14px] mt-1 text-white font-[500] hover:text-yellow-700 leading-[1.3]`}>{i.title}</h5>
+                    <h5 className={`w-20 gap-4 text-[14px] mt-1 text-[#fed592] font-[400] hover:text-[#fed592] leading-[1.3]`}>{i.title}</h5>
                   </div>
 
                 </div>
@@ -40,7 +40,7 @@ const MobileCategories = () => {
             })}
         </Slider>
         <Link>
-          <span className="text-xs mr-2 flex items-end justify-end text-white hover:text-yellow-500">See All</span>
+          <span className="text-xs mr-2 flex items-end justify-end text-white hover:text-[#fed592]">See All</span>
         </Link>
       </div>
     </>
