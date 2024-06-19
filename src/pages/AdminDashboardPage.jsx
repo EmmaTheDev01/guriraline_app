@@ -2,7 +2,7 @@ import React from "react";
 import AdminHeader from "../components/Layout/AdminHeader";
 import AdminSideBar from "../components/Admin/Layout/AdminSideBar";
 import AdminDashboardMain from "../components/Admin/AdminDashboardMain";
-
+import BottomNav from "../components/Layout/BottomNav";
 const AdminDashboardPage = () => {
   return (
     <div>
@@ -15,6 +15,7 @@ const AdminDashboardPage = () => {
           <AdminDashboardMain />
         </div>
       </div>
+      <BottomNav />
     </div>
   );
 };

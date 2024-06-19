@@ -2,7 +2,7 @@ import React from 'react'
 import AdminHeader from '../components/Layout/AdminHeader'
 import AdminSideBar from '../components/Admin/Layout/AdminSideBar'
 import AllWithdraw from "../components/Admin/AllWithdraw";
-
+import BottomNav from "../components/Layout/BottomNav";
 const AdminDashboardWithdraw = () => {
   return (
     <div>
@@ -15,6 +15,7 @@ const AdminDashboardWithdraw = () => {
          <AllWithdraw />
       </div>
     </div>
+    <BottomNav />
   </div>
   )
 }
