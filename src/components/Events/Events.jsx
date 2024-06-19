@@ -11,7 +11,7 @@ const Events = () => {
      {
       !isLoading && (
         <div className={`${styles.section}`}>
-      <div className={`${styles.heading} text-sm md:text-base lg:text-lg text-start`}>
+      <div className={`${styles.heading} text-sm mt-2 md:text-base lg:text-lg text-start`}>
         <h1>Sheduled Events</h1>
       </div>
 

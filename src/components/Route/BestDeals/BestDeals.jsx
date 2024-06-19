@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import styles from "../../../styles/styles";
 import ProductCard from "../ProductCard/ProductCard";
 
@@ -14,23 +17,40 @@ const BestDeals = () => {
     setData(firstFive);
   }, [allProducts]);
 
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4, // Number of slides to show on larger screens
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3, // Number of slides to show on tablets
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2, // Number of slides to show on mobile devices
+        },
+      },
+    ],
+  };
+
   return (
     <div>
       <div className={`${styles.section}`}>
         <div className={`${styles.heading} text-sm md:text-base lg:text-lg text-start`}>
           <h1 className="">Hot Deals</h1>
         </div>
-        <div className="flex flex-wrap justify-start gap-[20px] sm:gap-[20px] md:gap-[25px] lg:gap-[25px] xl:gap-[30px] mb-12 border-0">
-          {data && data.length !== 0 && (
-            <>
-              {data.map((i, index) => (
-                <div key={index}>
-                  <ProductCard data={i} />
-                </div>
-              ))}
-            </>
-          )}
-        </div>
+        <Slider {...settings}>
+          {data.map((product, index) => (
+            <div key={index}>
+              <ProductCard data={product} />
+            </div>
+          ))}
+        </Slider>
       </div>
     </div>
   );
