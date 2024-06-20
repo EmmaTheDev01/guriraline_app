@@ -163,7 +163,6 @@ const UserInbox = () => {
   };
 
   const imageSendingHandler = async (e) => {
-
     const receiverId = currentChat.members.find(
       (member) => member !== user._id
     );
@@ -176,15 +175,12 @@ const UserInbox = () => {
 
     try {
       await axios
-        .post(
-          `${server}/message/create-new-message`,
-          {
-            images: e,
-            sender: user._id,
-            text: newMessage,
-            conversationId: currentChat._id,
-          }
-        )
+        .post(`${server}/message/create-new-message`, {
+          images: e,
+          sender: user._id,
+          text: newMessage,
+          conversationId: currentChat._id,
+        })
         .then((res) => {
           setImages();
           setMessages([...messages, res.data.message]);
@@ -265,7 +261,7 @@ const MessageList = ({
   userData,
   online,
   setActiveStatus,
-  loading
+  loading,
 }) => {
   const [active, setActive] = useState(0);
   const [user, setUser] = useState([]);
@@ -377,10 +373,7 @@ const SellerInbox = ({
                 />
               )}
               {item.images && (
-                <img
-                  src={`${item.images?.url}`}
-                  className="w-[300px] h-[300px] object-cover rounded-[10px] ml-2 mb-2"
-                />
+                <img src={`${item.images?.url}`} className="w-[300px] h-[300px] object-cover rounded-[10px] ml-2 mb-2" alt="" />
               )}
               {item.text !== "" && (
                 <div>
@@ -401,11 +394,7 @@ const SellerInbox = ({
       </div>
 
       {/* send message input */}
-      <form
-        aria-required={true}
-        className="p-3 relative w-full flex justify-between items-center"
-        onSubmit={sendMessageHandler}
-      >
+      <form className="p-3 relative w-full flex justify-between items-center" onSubmit={sendMessageHandler} >
         <div className="w-[30px]">
           <input
             type="file"

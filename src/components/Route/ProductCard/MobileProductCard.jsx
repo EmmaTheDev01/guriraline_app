@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 import {
   AiFillHeart,
-  AiFillStar,
-  AiOutlineEye,
+
   AiOutlineHeart,
-  AiOutlineShoppingCart,
-  AiOutlineStar,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import styles from "../../../styles/styles";
 import { useDispatch, useSelector } from "react-redux";
-import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
 import {
   addToWishlist,
   removeFromWishlist,
 } from "../../../redux/actions/wishlist";
 import { useEffect } from "react";
-import { toast } from "react-toastify";
 
 const MobileProductCard = ({ data,isEvent }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
@@ -45,7 +40,7 @@ const MobileProductCard = ({ data,isEvent }) => {
 
   return (
     <>
-      <div className="w-[160px] h-[210px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer overflow-hidden">
+      <div className="w-[164px] h-[210px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer overflow-hidden">
         <div className="flex justify-end"></div>
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
           <img
