@@ -1,10 +1,11 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie"; // Import js-cookie library
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const res = await axios.post(
         `${server}/user/login-user`,
@@ -24,9 +25,16 @@ const Login = () => {
         },
         { withCredentials: true }
       );
+
+      // Assuming your token is returned in res.data.token
+      const token = res.data.token;
+
+      // Save token in cookies with expiration of 90 days
+      Cookies.set("token", token, { expires: 90 });
+
       toast.success("Login Success!");
       navigate("/");
-      window.location.reload(true);
+      window.location.reload();
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
         // If the error response contains a message, display it
@@ -38,7 +46,6 @@ const Login = () => {
       }
     }
   };
-  
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">

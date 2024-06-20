@@ -9,6 +9,9 @@ import BottomNav from "../components/Layout/BottomNav";
 const ProfilePage = () => {
   const { loading } = useSelector((state) => state.user);
   const [active, setActive] = useState(1);
+  const isSmallScreen = () => {
+    return window.innerWidth <= 768; // Adjust this width as per your requirement
+  }
   return (
     <div>
       {loading ? (
@@ -25,7 +28,8 @@ const ProfilePage = () => {
         </>
       )}
 
-      <BottomNav />
+      {/* Conditionally render BottomNav only on smaller screens */}
+      {isSmallScreen() && <BottomNav />}
     </div>
   );
 };
