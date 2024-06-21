@@ -146,7 +146,7 @@ const BottomNav = () => {
                 <div
                     style={{
                         position: "absolute",
-                        top: "50%",
+                        top: "30%",
                         left: "50%",
                         transform: "translate(-50%, -50%)",
                         width: "90%",
@@ -165,7 +165,7 @@ const BottomNav = () => {
                     />
                     <div>
                     {searchData && searchData.length !== 0 ? (
-              <div className="absolute min-h-[30vh] w-full bg-slate-50 shadow-sm-2 z-[9] p-4">
+              <div className="absolute min-h-[10%] w-[90%] bg-slate-50 shadow-sm-2 z-[9] p-4">
                 {searchData.map((product) => (
                   <div key={product._id} className="flex items-center py-3">
                     <Link
