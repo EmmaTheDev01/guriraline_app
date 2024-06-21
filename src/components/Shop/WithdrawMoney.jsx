@@ -103,9 +103,9 @@ const WithdrawMoney = () => {
 
   return (
     <div className="w-full h-[90vh] p-8">
-      <div className="w-full bg-white h-full rounded flex items-center justify-center flex-col">
-        <h5 className="text-[20px] pb-4">
-          Available Balance: ${availableBalance}
+      <div className="w-full bg-white h-full rounded flex items-center justify-center flex-col text-center">
+        <h5 className="text-[20px] block pb-4">
+          Available Balance: RWF {availableBalance}
         </h5>
         <div
           className={`${styles.button} text-white !h-[42px] !rounded`}
@@ -117,9 +117,8 @@ const WithdrawMoney = () => {
       {open && (
         <div className="w-full h-screen z-[9999] fixed top-0 left-0 flex items-center justify-center bg-[#0000004e]">
           <div
-            className={`w-[95%] 800px:w-[50%] bg-white shadow rounded ${
-              paymentMethod ? "h-[80vh] overflow-y-scroll" : "h-[unset]"
-            } min-h-[40vh] p-3`}
+            className={`w-[95%] 800px:w-[50%] bg-white shadow rounded ${paymentMethod ? "h-[80vh] overflow-y-scroll" : "h-[unset]"
+              } min-h-[40vh] p-3`}
           >
             <div className="w-full flex justify-end">
               <RxCross1
@@ -291,7 +290,7 @@ const WithdrawMoney = () => {
                       </div>
                     </div>
                     <br />
-                    <h4>Available Balance: {availableBalance}$</h4>
+                    <h4>Available Balance: {availableBalance} RWF</h4>
                     <br />
                     <div className="800px:flex w-full items-center">
                       <input

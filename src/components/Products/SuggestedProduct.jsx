@@ -17,7 +17,7 @@ const SuggestedProduct = ({ data }) => {
   return (
     <div>
       {data ? (
-        <div className={`p-4 ${styles.section}`}>
+        <div className={`p-4 ${styles.section} mb-20`}>
           <h2 className={`${styles.heading} text-[25px] font-[500] border-b mb-5`}>
             Related Products
           </h2>

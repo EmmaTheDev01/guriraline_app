@@ -143,16 +143,16 @@ const ProductDetails = ({ data }) => {
                 </div>
               </div>
               <div className="w-full 800px:w-[50%] pt-5">
-                <h1 className={`${styles.productTitle} text-lg sm:text-xl md:text-2xl lg:text-3xl`}>
+                <h1 className={`${styles.productTitle} text-md sm:text-xl md:text-xl lg:text-xl`}>
                   {data.name}
                 </h1>
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl">{data.description}</p>
+                <p className="text-sm sm:text-base md:text-md lg:text-lg mt-3">{data.description}</p>
                 <div className="flex pt-3">
                   <h4 className={`${styles.productDiscountPrice} text-base sm:text-lg md:text-xl lg:text-2xl`}>
-                    {data.discountPrice}$
+                   RWF {data.discountPrice}
                   </h4>
                   <h3 className={`${styles.price} text-sm sm:text-base md:text-lg lg:text-xl`}>
-                    {data.originalPrice ? data.originalPrice + "$" : null}
+                    {data.originalPrice ? data.originalPrice  : null}
                   </h3>
                 </div>
 

@@ -40,7 +40,7 @@ const MobileProductCard = ({ data,isEvent }) => {
 
   return (
     <>
-      <div className="w-[164px] h-[210px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer overflow-hidden">
+      <div className="w-[150px] h-[210px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer overflow-hidden">
         <div className="flex justify-end"></div>
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
           <img

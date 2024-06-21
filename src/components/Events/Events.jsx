@@ -5,7 +5,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from '../../styles/styles';
 import EventCard from './EventCard';
-import Loader from '../Layout/Loader';
 const Events = () => {
   const { allEvents, isLoading } = useSelector((state) => state.events);
 
@@ -53,7 +52,7 @@ const Events = () => {
         </div>
       ) : (
         <div className="flex justify-center items-center h-40">
-          <Loader /> {/* Display loader while fetching events */}
+          <p>Loading...</p>
         </div>
       )}
     </div>

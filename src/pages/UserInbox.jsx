@@ -357,7 +357,7 @@ const SellerInbox = ({
       </div>
 
       {/* messages */}
-      <div className="px-3 h-[75vh] py-3 overflow-y-scroll">
+      <div className="px-3 h-[65vh] border-[1px] py-3 overflow-y-scroll mb-20">
         {messages &&
           messages.map((item, index) => (
             <div
@@ -378,7 +378,7 @@ const SellerInbox = ({
               {item.text !== "" && (
                 <div>
                   <div
-                    className={`w-max p-2 rounded ${item.sender === sellerId ? "bg-[#000]" : "bg-[#29625d]"
+                    className={`w-max p-2 rounded-[16px] ${item.sender === sellerId ? "bg-[#000]" : "bg-[#29625d]"
                       } text-[#fff] h-min`}
                   >
                     <p>{item.text}</p>
@@ -394,7 +394,7 @@ const SellerInbox = ({
       </div>
 
       {/* send message input */}
-      <form className="p-3 relative w-full flex justify-between items-center" onSubmit={sendMessageHandler} >
+      <form className="p-3 relative w-full flex justify-between items-center mb-10" onSubmit={sendMessageHandler} >
         <div className="w-[30px]">
           <input
             type="file"
@@ -404,7 +404,7 @@ const SellerInbox = ({
             onChange={handleImageUpload}
           />
           <label htmlFor="image">
-            <TfiGallery className="cursor-pointer" size={20} />
+            <TfiGallery className="cursor-pointer text-[#29625d] font-900" size={20} />
           </label>
         </div>
         <div className="w-full">
@@ -416,11 +416,11 @@ const SellerInbox = ({
             onChange={(e) => setNewMessage(e.target.value)}
             className={`${styles.input}`}
           />
-          <input type="submit" value="Send" className="hidden" id="send" />
+          <input type="submit" value="Send" className="hidden" id="send"/>
           <label htmlFor="send">
             <AiOutlineSend
               size={20}
-              className="absolute right-4 top-5 cursor-pointer"
+              className="absolute right-4 top-5 cursor-pointer text-[#29625d] font-900"
             />
           </label>
         </div>

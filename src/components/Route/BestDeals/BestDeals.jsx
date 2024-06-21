@@ -57,7 +57,7 @@ const BestDeals = () => {
           </Slider>
         ) : (
           <div className="flex justify-center items-center h-40">
-            <Loader /> {/* Display loader while fetching products */}
+          <p>Loading...</p>
           </div>
         )}
       </div>

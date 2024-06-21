@@ -213,7 +213,7 @@ const Header = ({ activeHeading }) => {
       <div
         className={`${active === true ? "shadow-sm fixed top-0 left-0 z-10" : null} w-full h-[60px] bg-[#fff] z-50 top-0 left-0 shadow-sm 800px:hidden`}>
         <div className="w-full flex items-center justify-between">
-          <div className="ml-[20px] mt-1 w-[290px]">
+          <div className="ml-[20px] mt-1 w-[80%]">
             {/* Search container */}
             <div className="mt-1 w-full relative">
               <input
@@ -227,26 +227,24 @@ const Header = ({ activeHeading }) => {
                 size={20}
                 className="absolute right-2 top-2.5 cursor-pointer text-[#29625d]"
               />
-              {searchData && searchData.length !== 0 ? (
-                <div className="absolute min-h-[30vh] w-full bg-slate-50 shadow-sm-2 z-[9] p-4">
-                  {searchData &&
-                    searchData.map((i, index) => {
-                      return (
-                        <Link to={`/product/${i._id}`}>
-                          <div className="w-full flex items-start-py-3 mt-2 mb-3">
-                            <img
-                              src={`${i.images[0]?.url}`}
-                              alt=""
-                              className="w-[40px] h-[40px] mr-[10px]"
-                            />
-                            <h1>{i.name}</h1>
-                          </div>
-                          <hr></hr>
-                        </Link>
-                      );
-                    })}
+              {searchData && searchData.length > 0 ? (
+                <div className="absolute min-h-[30vh] w-full bg-slate-50 shadow-sm-2 z-[9] pt-4">
+                  {searchData.map((i, index) => (
+                    <Link to={`/product/${i._id}`} key={i._id}>
+                      <div className="w-full flex items-start-py-3 mt-2 mb-3">
+                        <img
+                          src={`${i.images[0]?.url}`}
+                          alt=""
+                          className="w-[40px] h-[40px] mr-[10px]"
+                        />
+                        <h1>{i.name}</h1>
+                      </div>
+                      <hr />
+                    </Link>
+                  ))}
                 </div>
               ) : null}
+
             </div>
           </div>
           <div>
