@@ -241,7 +241,7 @@ const BottomNav = () => {
           <div
             className={`fixed w-full bg-[#0000005f] z-20 h-full top-0 left-0`}
           >
-            <div className="fixed w-[100%] bg-[#fff] h-screen top-0 left-0 z-10 overflow-y-scroll">
+            <div className="fixed w-[100%] bg-[#fff] h-screen top-0 left-0 z-100 overflow-y-scroll">
               <div className="w-full justify-between flex pr-3">
                 <RxCross1
                   size={30}

@@ -146,7 +146,7 @@ const ProductDetails = ({ data }) => {
                 <h1 className={`${styles.productTitle} text-md sm:text-xl md:text-xl lg:text-xl`}>
                   {data.name}
                 </h1>
-                <p className="text-sm sm:text-base md:text-md lg:text-lg mt-3">{data.description}</p>
+                <p className="text-sm sm:text-base md:text-md lg:text-md mt-3">{data.description}</p>
                 <div className="flex pt-3">
                   <h4 className={`${styles.productDiscountPrice} text-base sm:text-lg md:text-xl lg:text-2xl`}>
                    RWF {data.discountPrice}
@@ -216,7 +216,7 @@ const ProductDetails = ({ data }) => {
                         {data.shop.name}
                       </h3>
                     </Link>
-                    <h5 className="pb-3 text-xs sm:text-sm md:text-base lg:text-lg">
+                    <h5 className="pb-3 text-xs sm:text-sm md:text-base lg:text-md">
                       ({averageRating}/5) Ratings
                     </h5>
                   </div>
@@ -288,7 +288,7 @@ const ProductDetailsInfo = ({
 
       {active === 1 && (
         <>
-          <p className="py-2 text-sm sm:text-base md:text-lg lg:text-xl">
+          <p className="py-2 text-sm sm:text-base md:text-md lg:text-md">
             {data.description}
           </p>
           <p className="py-2 text-sm sm:text-base md:text-lg lg:text-xl">
@@ -314,7 +314,7 @@ const ProductDetailsInfo = ({
                     </h1>
                     <Ratings rating={data?.ratings} />
                   </div>
-                  <p className="text-xs sm:text-sm md:text-base lg:text-lg">{item.comment}</p>
+                  <p className="text-xs sm:text-sm md:text-base lg:text-md">{item.comment}</p>
                 </div>
               </div>
             ))}
@@ -338,22 +338,22 @@ const ProductDetailsInfo = ({
                 <h3 className={`${styles.shop_name} text-sm sm:text-base md:text-lg lg:text-xl`}>
                   {data.shop.name}
                 </h3>
-                <h5 className="pb-2 text-xs sm:text-sm md:text-base lg:text-lg">
+                <h5 className="pb-2 text-xs sm:text-sm md:text-base lg:text-md">
                   ({averageRating}/5) Ratings
                 </h5>
               </div>
             </div>
-            <p className="pt-2 text-xs sm:text-sm md:text-base lg:text-lg">{data.shop.description}</p>
+            <p className="pt-2 text-xs sm:text-sm md:text-base lg:text-md">{data.shop.description}</p>
           </div>
           <div className="w-full 800px:w-[50%] mt-5 800px:mt-0 800px:flex 800px:flex-col 800px:items-end">
             <div className="text-left 800px:text-right">
-              <h5 className="font-[600] text-xs sm:text-sm md:text-base lg:text-lg">
+              <h5 className="font-[600] text-xs sm:text-sm md:text-base lg:text-md">
                 Joined on: <span className="font-[500]">{data.shop?.createdAt?.slice(0, 10)}</span>
               </h5>
-              <h5 className="font-[600] pt-3 text-xs sm:text-sm md:text-base lg:text-lg">
+              <h5 className="font-[600] pt-3 text-xs sm:text-sm md:text-base lg:text-md">
                 Total Products: <span className="font-[500]">{products && products.length}</span>
               </h5>
-              <h5 className="font-[600] pt-3 text-xs sm:text-sm md:text-base lg:text-lg">
+              <h5 className="font-[600] pt-3 text-xs sm:text-sm md:text-base lg:text-md">
                 Total Reviews: <span className="font-[500]">{totalReviewsLength}</span>
               </h5>
             </div>
