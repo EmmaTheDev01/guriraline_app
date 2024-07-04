@@ -24,6 +24,7 @@ const BestDeals = () => {
     speed: 500,
     slidesToShow: 4, // Number of slides to show on larger screens
     slidesToScroll: 1,
+    centeredSlides: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -47,7 +48,7 @@ const BestDeals = () => {
           <h1 className="">Hot Deals</h1>
         </div>
         {allProducts ? (
-          <Slider {...settings} className="mt-4 w-[85%] ml-auto mr-auto">
+          <Slider {...settings} className="mt-4 w-[90%] ml-auto mr-auto">
             {data.map((product, index) => (
               <div key={index}>
                 <ProductCard data={product} />
