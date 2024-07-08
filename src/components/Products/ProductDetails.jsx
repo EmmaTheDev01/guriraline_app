@@ -85,7 +85,7 @@ const ProductDetails = ({ data }) => {
       0
     );
 
-  const avg =  totalRatings / totalReviewsLength || 0;
+  const avg = totalRatings / totalReviewsLength || 0;
 
   const averageRating = avg.toFixed(2);
 
@@ -143,16 +143,24 @@ const ProductDetails = ({ data }) => {
                 </div>
               </div>
               <div className="w-full 800px:w-[50%] pt-5">
-                <h1 className={`${styles.productTitle} text-md sm:text-xl md:text-xl lg:text-xl`}>
+                <h1
+                  className={`${styles.productTitle} text-md sm:text-xl md:text-xl lg:text-xl`}
+                >
                   {data.name}
                 </h1>
-                <p className="text-sm sm:text-base md:text-md lg:text-md mt-3">{data.description}</p>
+                <p className="text-sm sm:text-base md:text-md lg:text-md mt-3">
+                  {data.description}
+                </p>
                 <div className="flex pt-3">
-                  <h4 className={`${styles.productDiscountPrice} text-base sm:text-lg md:text-xl lg:text-2xl`}>
-                   RWF {data.discountPrice}
+                  <h4
+                    className={`${styles.productDiscountPrice} text-base sm:text-lg md:text-xl lg:text-2xl`}
+                  >
+                    RWF {data.discountPrice}
                   </h4>
-                  <h3 className={`${styles.price} text-sm sm:text-base md:text-lg lg:text-xl`}>
-                    {data.originalPrice ? data.originalPrice  : null}
+                  <h3
+                    className={`${styles.price} text-sm sm:text-base md:text-lg lg:text-xl`}
+                  >
+                    {data.originalPrice ? data.originalPrice : null}
                   </h3>
                 </div>
 
@@ -212,7 +220,9 @@ const ProductDetails = ({ data }) => {
                   </Link>
                   <div className="pr-8">
                     <Link to={`/shop/preview/${data?.shop._id}`}>
-                      <h3 className={`${styles.shop_name} pb-1 pt-1 text-sm sm:text-base md:text-lg lg:text-xl`}>
+                      <h3
+                        className={`${styles.shop_name} pb-1 pt-1 text-sm sm:text-base md:text-lg lg:text-xl`}
+                      >
                         {data.shop.name}
                       </h3>
                     </Link>
@@ -264,7 +274,9 @@ const ProductDetailsInfo = ({
           >
             Product Details
           </h5>
-          {active === 1 ? <div className={`${styles.active_indicator}`} /> : null}
+          {active === 1 ? (
+            <div className={`${styles.active_indicator}`} />
+          ) : null}
         </div>
         <div className="relative">
           <h5
@@ -273,7 +285,9 @@ const ProductDetailsInfo = ({
           >
             Product Reviews
           </h5>
-          {active === 2 ? <div className={`${styles.active_indicator}`} /> : null}
+          {active === 2 ? (
+            <div className={`${styles.active_indicator}`} />
+          ) : null}
         </div>
         <div className="relative">
           <h5
@@ -282,7 +296,9 @@ const ProductDetailsInfo = ({
           >
             Seller Information
           </h5>
-          {active === 3 ? <div className={`${styles.active_indicator}`} /> : null}
+          {active === 3 ? (
+            <div className={`${styles.active_indicator}`} />
+          ) : null}
         </div>
       </div>
 
@@ -314,14 +330,14 @@ const ProductDetailsInfo = ({
                     </h1>
                     <Ratings rating={data?.ratings} />
                   </div>
-                  <p className="text-xs sm:text-sm md:text-base lg:text-md">{item.comment}</p>
+                  <p className="text-xs sm:text-sm md:text-base lg:text-md">
+                    {item.comment}
+                  </p>
                 </div>
               </div>
             ))}
 
-          {data && data.reviews.length === 0 && (
-            <h5>No Reviews yet!</h5>
-          )}
+          {data && data.reviews.length === 0 && <h5>No Reviews yet!</h5>}
         </div>
       )}
 
@@ -335,7 +351,9 @@ const ProductDetailsInfo = ({
                 alt=""
               />
               <div className="pl-3">
-                <h3 className={`${styles.shop_name} text-sm sm:text-base md:text-lg lg:text-xl`}>
+                <h3
+                  className={`${styles.shop_name} text-sm sm:text-base md:text-lg lg:text-xl`}
+                >
                   {data.shop.name}
                 </h3>
                 <h5 className="pb-2 text-xs sm:text-sm md:text-base lg:text-md">
@@ -343,18 +361,27 @@ const ProductDetailsInfo = ({
                 </h5>
               </div>
             </div>
-            <p className="pt-2 text-xs sm:text-sm md:text-base lg:text-md">{data.shop.description}</p>
+            <p className="pt-2 text-xs sm:text-sm md:text-base lg:text-md">
+              {data.shop.description}
+            </p>
           </div>
           <div className="w-full 800px:w-[50%] mt-5 800px:mt-0 800px:flex 800px:flex-col 800px:items-end">
             <div className="text-left 800px:text-right">
               <h5 className="font-[600] text-xs sm:text-sm md:text-base lg:text-md">
-                Joined on: <span className="font-[500]">{data.shop?.createdAt?.slice(0, 10)}</span>
+                Joined on:{" "}
+                <span className="font-[500]">
+                  {data.shop?.createdAt?.slice(0, 10)}
+                </span>
               </h5>
               <h5 className="font-[600] pt-3 text-xs sm:text-sm md:text-base lg:text-md">
-                Total Products: <span className="font-[500]">{products && products.length}</span>
+                Total Products:{" "}
+                <span className="font-[500]">
+                  {products && products.length}
+                </span>
               </h5>
               <h5 className="font-[600] pt-3 text-xs sm:text-sm md:text-base lg:text-md">
-                Total Reviews: <span className="font-[500]">{totalReviewsLength}</span>
+                Total Reviews:{" "}
+                <span className="font-[500]">{totalReviewsLength}</span>
               </h5>
             </div>
           </div>

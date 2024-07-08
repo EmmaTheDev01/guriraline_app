@@ -103,18 +103,13 @@ const Header = ({ activeHeading }) => {
                   </div>
                 ))}
               </div>
-            ) : (
-              null
-            )}
+            ) : null}
           </div>
 
-          <div className={`${styles.button}`}>
-            <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
-              <h1 className="text-[#fff] flex items-center">
-                {isSeller ? "Seller Dashboard" : "Become a Seller"}{" "}
-                <IoIosArrowForward className="ml-1" />
-              </h1>
-            </Link>
+          <div className="ml-2 mt-1">
+            <a className="text-black font-[600] hover:bg-[#29625d] hover:text-white p-2 rounded-md" href="#" target="_blank">
+              Earn With Us
+            </a>
           </div>
         </div>
       </div>
@@ -211,7 +206,9 @@ const Header = ({ activeHeading }) => {
 
       {/* mobile header */}
       <div
-        className={`${active === true ? "shadow-sm fixed top-0 left-0 z-10" : null} w-full h-[60px] bg-[#fff] z-50 top-0 left-0 shadow-sm 800px:hidden`}>
+        className={`${active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
+          } w-full h-[60px] bg-[#fff] z-50 top-0 left-0 shadow-sm 800px:hidden`}
+      >
         <div className="w-full flex items-center justify-between">
           <div className="ml-[20px] mt-1 w-[80%]">
             {/* Search container */}
@@ -244,7 +241,6 @@ const Header = ({ activeHeading }) => {
                   ))}
                 </div>
               ) : null}
-
             </div>
           </div>
           <div>

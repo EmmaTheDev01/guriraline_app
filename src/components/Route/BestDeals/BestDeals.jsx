@@ -48,7 +48,7 @@ const BestDeals = () => {
           <h1 className="">Hot Deals</h1>
         </div>
         {allProducts ? (
-          <Slider {...settings} className="mt-4 w-[90%] ml-auto mr-auto">
+          <Slider {...settings} className="mt-4 w-full ml-auto mr-auto">
             {data.map((product, index) => (
               <div key={index}>
                 <ProductCard data={product} />

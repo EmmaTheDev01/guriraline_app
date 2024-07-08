@@ -27,7 +27,7 @@ export const brandingData = [
   {
     id: 1,
     title: "Free Shipping",
-    Description: "From all orders above $500",
+    Description: "From all orders above RWF 500,000",
     icon: (
       <svg
         width="36"
