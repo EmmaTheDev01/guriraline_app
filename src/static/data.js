@@ -208,14 +208,14 @@ export const categoriesData = [
     title: "Accesories",
     subTitle: "",
     image_Url:
-      "https://m.media-amazon.com/images/I/611fx6tfVWS._AC_UY1100_.jpg",
+      "https://galxboy.co.za/cdn/shop/files/EVA1_375x375_crop_center.png?v=1709567981",
   },
   {
     id: 4,
     title: "Clothing",
     subTitle: "",
     image_Url:
-      "https://w7.pngwing.com/pngs/987/597/png-transparent-assorted-color-clothes-on-clothes-rack-t-shirt-clothing-armoires-wardrobes-closet-clothes-hanger-clothing-retail-fashion-top-thumbnail.png"
+      "https://5.imimg.com/data5/LG/AM/OW/SELLER-31619481/plain-t-shirt-500x500.jpeg"
   },
   {
     id: 5,
@@ -256,7 +256,7 @@ export const categoriesData = [
     title: "Music",
     subTitle: "",
     image_Url:
-      "https://poshace.com/pub/media/catalog/product/cache/95ca844a72e649bb1089a2da1cdcef7d/3/1/31p7YMrSnGL._SL1500__1629956436.jpg",
+      "https://vader-prod.s3.amazonaws.com/1623263579-410fNGSx2YL._SL500_.jpg",
   },
   {
     id: 11,

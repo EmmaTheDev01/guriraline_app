@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import styles from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { server } from "../../server";
 import { toast } from "react-toastify";
-import Cookies from "js-cookie"; // Import js-cookie library
+import Cookies from "js-cookie";
+import logo from "../../Assests/Logo/logo.png";
+import { server } from "../../server";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,17 +19,11 @@ const Login = () => {
     try {
       const res = await axios.post(
         `${server}/user/login-user`,
-        {
-          email,
-          password,
-        },
+        { email, password },
         { withCredentials: true }
       );
 
-      // Assuming your token is returned in res.data.token
       const token = res.data.token;
-
-      // Save token in cookies with expiration of 90 days
       Cookies.set("token", token, { expires: 90 });
 
       toast.success("Login Success!");
@@ -37,12 +31,10 @@ const Login = () => {
       window.location.reload();
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
-        // If the error response contains a message, display it
         toast.error(err.response.data.message);
       } else {
-        // If the error does not have the expected structure, handle it accordingly
         toast.error("An error occurred during login.");
-        console.error(err); // Log the error for further investigation
+        console.error(err);
       }
     }
   };
@@ -50,18 +42,13 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Login to your account
-        </h2>
-      </div>
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <div className="flex justify-center mb-4">
+            <img src={logo} alt="logo" className="h-12 w-auto" />
+          </div>
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email address
               </label>
               <div className="mt-1">
@@ -77,10 +64,7 @@ const Login = () => {
               </div>
             </div>
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <div className="mt-1 relative">
@@ -93,58 +77,56 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-900 focus:border-green-900 sm:text-sm"
                 />
-                {visible ? (
-                  <AiOutlineEye
-                    className="absolute right-2 top-2 cursor-pointer"
-                    size={25}
-                    onClick={() => setVisible(false)}
-                  />
-                ) : (
-                  <AiOutlineEyeInvisible
-                    className="absolute right-2 top-2 cursor-pointer"
-                    size={25}
-                    onClick={() => setVisible(true)}
-                  />
-                )}
+                <span className="absolute right-2 top-2">
+                  {visible ? (
+                    <AiOutlineEye
+                      className="cursor-pointer"
+                      size={20}
+                      onClick={() => setVisible(false)}
+                    />
+                  ) : (
+                    <AiOutlineEyeInvisible
+                      className="cursor-pointer"
+                      size={20}
+                      onClick={() => setVisible(true)}
+                    />
+                  )}
+                </span>
               </div>
             </div>
-            <div className={`${styles.noramlFlex} justify-between`}>
-              <div className={`${styles.noramlFlex}`}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
                 <input
                   type="checkbox"
                   name="remember-me"
                   id="remember-me"
-                  className="h-4 w-4 text-[#29625d] focus:ring-green-900 border-gray-300 rounded"
+                  className="h-4 w-4 text-green-900 focus:ring-green-900 border-gray-300 rounded"
                 />
-                <label
-                  htmlFor="remember-me"
-                  className="ml-2 block text-sm text-gray-900"
-                >
+                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                   Remember me
                 </label>
               </div>
               <div className="text-sm">
-                <a
-                  href=".forgot-password"
-                  className="font-medium text-[#29625d] hover:text-green-500"
-                >
+                <Link to="/forgot-password" className="font-medium text-green-900 hover:text-green-500">
                   Forgot your password?
-                </a>
+                </Link>
               </div>
             </div>
             <div>
               <button
                 type="submit"
-                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#29625d] hover:bg-green-900"
+                className="w-full h-10 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#29625d] hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-900"
               >
-                Submit
+                Sign in
               </button>
             </div>
-            <div className={`${styles.noramlFlex} w-full`}>
-              <h4>Not have any account?</h4>
-              <Link to="/sign-up" className="text-[#29625d] pl-2">
-                Sign Up
-              </Link>
+            <div className="flex justify-center">
+              <p className="text-sm text-gray-900">
+                Don't have an account?{" "}
+                <Link to="/sign-up" className="font-medium text-green-900 hover:text-green-500">
+                  Sign up
+                </Link>
+              </p>
             </div>
           </form>
         </div>
