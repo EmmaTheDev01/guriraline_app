@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { AiFillHeart, AiFillStar, AiOutlineEye, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineStar } from "react-icons/ai";
+import { AiFillHeart, AiOutlineEye, AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import styles from "../../../styles/styles";
 import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
@@ -87,11 +87,10 @@ const ProductCard = ({ data, isEvent }) => {
           <div className="py-2 flex items-center justify-between">
             <div className="flex">
               <h5 className={`${styles.productDiscountPrice}`}>
-              RWF
+                RWF
                 {data.originalPrice === 0
                   ? data.originalPrice
                   : data.discountPrice}
-                
               </h5>
               <h4 className={`${styles.price}`}>
                 {data.originalPrice ? data.originalPrice + " $" : null}
@@ -104,11 +103,11 @@ const ProductCard = ({ data, isEvent }) => {
         </Link>
 
         {/* side options */}
-        <div className="bg-white rounded-md shadow-md z-50">
+        <div className="bg-[#fdd69e] rounded-md shadow-md z-50 absolute right-0 top-0 mt-4 mr-4 p-2">
           {click ? (
             <AiFillHeart
               size={22}
-              className="cursor-pointer absolute right-2 top-5"
+              className="cursor-pointer"
               onClick={() => removeFromWishlistHandler(data)}
               color={click ? "red" : "#333"}
               title="Remove from wishlist"
@@ -116,7 +115,7 @@ const ProductCard = ({ data, isEvent }) => {
           ) : (
             <AiOutlineHeart
               size={22}
-              className="cursor-pointer absolute right-2 top-5"
+              className="cursor-pointer"
               onClick={() => addToWishlistHandler(data)}
               color={click ? "red" : "#333"}
               title="Add to wishlist"
@@ -124,14 +123,14 @@ const ProductCard = ({ data, isEvent }) => {
           )}
           <AiOutlineEye
             size={22}
-            className="cursor-pointer absolute right-2 top-14"
+            className="cursor-pointer mt-4"
             onClick={() => setOpen(!open)}
             color="#333"
             title="Quick view"
           />
           <AiOutlineShoppingCart
             size={25}
-            className="cursor-pointer absolute right-2 top-24"
+            className="cursor-pointer mt-4"
             onClick={() => addToCartHandler(data._id)}
             color="#444"
             title="Add to cart"

@@ -378,7 +378,7 @@ const SellerInbox = ({
                 )}
                 {item.images && (
                   <img
-                    src={`${item.images?.url}`}
+                    src={`${item.images?.url}`} alt="text-photo1"
                     className="w-[300px] h-[300px] object-cover rounded-[10px] mr-2"
                   />
                 )}

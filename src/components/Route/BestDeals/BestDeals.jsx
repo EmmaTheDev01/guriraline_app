@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styles from "../../../styles/styles"; 
+import styles from "../../../styles/styles";
 import ProductCard from "../ProductCard/ProductCard";
 
 const BestDeals = () => {
@@ -12,8 +12,11 @@ const BestDeals = () => {
 
   useEffect(() => {
     if (allProducts && allProducts.length > 0) {
-      const allProductsData = [...allProducts];
-      const sortedData = allProductsData.sort((a, b) => b.sold_out - a.sold_out);
+      // Filter products where bestdeals is true
+      const bestDealsProducts = allProducts.filter(product => product.bestdeal);
+
+      // Sort and select top 5
+      const sortedData = bestDealsProducts.sort((a, b) => b.sold_out - a.sold_out);
       const firstFive = sortedData.slice(0, 5);
       setData(firstFive);
     }
@@ -50,7 +53,7 @@ const BestDeals = () => {
         <div className={`${styles.heading} text-sm md:text-base lg:text-lg text-start`}>
           <h1 className="">Hot Deals</h1>
         </div>
-        {allProducts ? (
+        {data.length > 0 ? (
           <Slider {...settings} className="mt-4 w-full ml-auto mr-auto">
             {data.map((product, index) => (
               <div key={index}>
@@ -60,7 +63,7 @@ const BestDeals = () => {
           </Slider>
         ) : (
           <div className="flex justify-center items-center h-40">
-          <p>Loading...</p>
+            <p>No hot deals available</p>
           </div>
         )}
       </div>
