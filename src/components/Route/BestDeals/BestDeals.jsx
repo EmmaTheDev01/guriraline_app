@@ -24,18 +24,21 @@ const BestDeals = () => {
     speed: 500,
     slidesToShow: 4, // Number of slides to show on larger screens
     slidesToScroll: 1,
-    centeredSlides: true,
+    centerMode: true, // Enable centering
+    centerPadding: '0', // Adjust this value as needed
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3, // Number of slides to show on tablets
+          centerPadding: '20px', // Adjust this value as needed
         },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 2, // Number of slides to show on mobile devices
+          centerPadding: '10px', // Adjust this value as needed
         },
       },
     ],

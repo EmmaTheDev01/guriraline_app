@@ -11,6 +11,18 @@ import { TfiGallery } from "react-icons/tfi";
 import styles from "../styles/styles";
 import BottomNav from "../components/Layout/BottomNav";
 
+// Notifier Component
+const Notifier = ({ message, onClose }) => {
+  if (!message) return null;
+
+  return (
+    <div className="fixed top-0 right-0 m-4 p-3 bg-red-500 text-white rounded-lg shadow-lg">
+      <p>{message}</p>
+      <button onClick={onClose} className="absolute top-1 right-1 text-xl">✕</button>
+    </div>
+  );
+};
+
 const ENDPOINT = "https://guriraline-socket.onrender.com";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
@@ -26,6 +38,7 @@ const UserInbox = () => {
   const [images, setImages] = useState();
   const [activeStatus, setActiveStatus] = useState(false);
   const [open, setOpen] = useState(false);
+  const [notifierMessage, setNotifierMessage] = useState(""); // State for notifier message
   const scrollRef = useRef(null);
 
   useEffect(() => {
@@ -47,14 +60,14 @@ const UserInbox = () => {
   useEffect(() => {
     const getConversation = async () => {
       try {
-        const resonse = await axios.get(
+        const response = await axios.get(
           `${server}/conversation/get-all-conversation-user/${user?._id}`,
           {
             withCredentials: true,
           }
         );
 
-        setConversations(resonse.data.conversations);
+        setConversations(response.data.conversations);
       } catch (error) {
         // console.log(error);
       }
@@ -79,7 +92,6 @@ const UserInbox = () => {
     return online ? true : false;
   };
 
-  // get messages
   useEffect(() => {
     const getMessage = async () => {
       try {
@@ -94,9 +106,23 @@ const UserInbox = () => {
     getMessage();
   }, [currentChat]);
 
-  // create new message
+  // Function to check for URLs or phone numbers in the message
+  const containsURLorPhoneNumber = (text) => {
+    const urlPattern = /https?:\/\/[^\s]*\.[^\s]+/g;
+    const phonePattern = /\b\d{10,}\b/g; // Adjust this pattern based on phone number formats
+
+    return urlPattern.test(text) || phonePattern.test(text);
+  };
+
   const sendMessageHandler = async (e) => {
     e.preventDefault();
+
+    // Check for URLs or phone numbers
+    if (containsURLorPhoneNumber(newMessage)) {
+      setNotifierMessage("Messages containing URLs or phone numbers are not allowed.");
+      setTimeout(() => setNotifierMessage(""), 3000); // Hide the notifier after 3 seconds
+      return;
+    }
 
     const message = {
       sender: user._id,
@@ -202,18 +228,18 @@ const UserInbox = () => {
   };
 
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ beahaviour: "smooth" });
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   return (
     <div className="w-full">
+      <Notifier message={notifierMessage} onClose={() => setNotifierMessage("")} /> {/* Add Notifier component */}
       {!open && (
         <>
           <Header />
           <h3 className="text-center text-[30px] py-3 font-Poppins">
             All Messages
           </h3>
-          {/* All messages list */}
           {conversations &&
             conversations.map((item, index) => (
               <MessageList
@@ -266,6 +292,7 @@ const MessageList = ({
   const [active, setActive] = useState(0);
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
+
   const handleClick = (id) => {
     navigate(`/inbox?${id}`);
     setOpen(true);
@@ -336,7 +363,6 @@ const SellerInbox = ({
 }) => {
   return (
     <div className="w-[full] min-h-full flex flex-col justify-between p-5">
-      {/* message header */}
       <div className="w-full flex p-3 items-center justify-between bg-slate-200">
         <div className="flex">
           <img
@@ -356,7 +382,6 @@ const SellerInbox = ({
         />
       </div>
 
-      {/* messages */}
       <div className="px-3 h-[65vh] border-[1px] py-3 overflow-y-scroll mb-20">
         {messages &&
           messages.map((item, index) => (
@@ -393,7 +418,6 @@ const SellerInbox = ({
           ))}
       </div>
 
-      {/* send message input */}
       <form className="p-3 relative w-full flex justify-between items-center mb-10" onSubmit={sendMessageHandler} >
         <div className="w-[30px]">
           <input

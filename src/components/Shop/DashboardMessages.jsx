@@ -383,19 +383,18 @@ const SellerInbox = ({
                   />
                 )}
                 {item.text !== "" && (
-                  <div>
+                  <div className="flex flex-col">
                     <div
-                      className={`w-max p-1.5 rounded-[14px] ${item.sender === sellerId ? "bg-[#000]" : "bg-[#29625d]"
-                        } text-[#fff] h-min`}
+                      className={`max-w-[300px] p-2 rounded-lg ${item.sender === sellerId ? "bg-[#000]" : "bg-[#29625d]"} text-[#fff]`}
                     >
-                      <p>{item.text}</p>
+                      <p className="whitespace-pre-wrap break-words">{item.text}</p>
                     </div>
-
-                    <p className="text-[12px] text-[#000000d3] pt-1">
+                    <p className="text-xs text-[#000000d3] pt-1">
                       {format(item.createdAt)}
                     </p>
                   </div>
                 )}
+
               </div>
             );
           })}

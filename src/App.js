@@ -58,6 +58,8 @@ import { ShopHomePage } from "./ShopRoutes.js";
 import SellerProtectedRoute from "./routes/SellerProtectedRoute";
 import { getAllProducts } from "./redux/actions/product";
 import { getAllEvents } from "./redux/actions/event";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage.js";
+import ResetPasswordPage from "./pages/ResetPasswordPage.js";
 
 const App = () => {
   useEffect(() => {
@@ -72,6 +74,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path='/reset-password/:token' element={<ResetPasswordPage />} />
         <Route path="/sign-up" element={<SignupPage />} />
         <Route
           path="/activation/:activation_token"

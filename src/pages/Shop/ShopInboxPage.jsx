@@ -16,7 +16,7 @@ const ShopInboxPage = () => {
         <div className="w-[80px] 800px:w-[330px] mb-10">
           <DashboardSideBar active={8} />
         </div>
-        <div className="mb-10">
+        <div className="mb-10 w-90 800px:w-[calc(100%-330px)] ml-auto mr-auto">
           <DashboardMessages />
         </div>
       </div>
